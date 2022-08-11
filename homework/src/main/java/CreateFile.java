@@ -2,16 +2,19 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class CreateFile {
 
-    public void fileCreator(String fileName, List<String> content) {
+    public void fileCreator(List<String> content) {
         try {
+            String fileName = UserInput.getFileName();
 //            Checks if the specified file already exits
-            File newFile = new File(fileName);
-            if (newFile.createNewFile()) {
+            File readCsvFile = new File(Objects.requireNonNull(fileName, "output"));
+            if (readCsvFile.createNewFile()) {
 //             Creates file if it does not exist and then writes
-                System.out.println("Created " + newFile.getName());
+
+                System.out.println("Created " + readCsvFile.getName());
                 fileWrite(fileName, content);
             } else {
 //                informs user the file exists and then writes to existing file.
