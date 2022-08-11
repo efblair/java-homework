@@ -7,35 +7,36 @@ import java.util.Scanner;
 
 public class ReadInput {
 //    Class for Reading in the data from csv.
-    public List<String> listInput() {
+    public List<String> listInput() throws FileNotFoundException {
         String fileName = getFileName();
         List<String> content = new ArrayList<>();
         try {
 //            Checks to see if the file exists within specified location
-            File myCSV = new File(fileName);
-            Scanner myReader = new Scanner(myCSV);
+            File readCsvFile = new File(fileName);
+            Scanner fileReader = new Scanner(readCsvFile);
 //          Reads the data from the CSV into a List of Lists with each new line representing a new Line
-            while (myReader.hasNext()) {
-                String line = myReader.next();
-                line = line.replaceAll("[,]", " ");
-                content.add(line.trim());
+            while (fileReader.hasNext()) {
+                String Row = fileReader.next();
+                Row = Row.replaceAll("[,]", " ");
+                content.add(Row);
             }
+            return content;
 //      throws an error if the file cannot be located
         } catch (FileNotFoundException e) {
-            System.out.println("Error:" + e);
-        }
+            System.out.println("Please ensure you provided the correct path or file is in project folder");
+            throw(e);
 
-        return content;
+        }
     }
 
     public String getFileName() {
 
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter name of CSV - (file extension not required)");
+        System.out.println("Enter name and path of CSV - (file extension not required)");
 
         String fileName = myObj.nextLine();
-        fileName = "../" + fileName.trim() + ".csv"; // Read user input
+        fileName = fileName.trim() + ".csv"; // Read user input
 
         return fileName;
     }

@@ -26,19 +26,19 @@ public class CreateFile {
 
     public void fileWrite(String fileName, List<String> content) throws IOException {
 //        Opens the file writer I/O stream
-        FileWriter myWriter = new FileWriter(fileName);
+        FileWriter fileWriter = new FileWriter(fileName);
             String[] newList;
 
         for (String s : content) {
                 newList = s.split(" ");
-                myWriter.append(String.join(",", newList ));
-                myWriter.append("\n");
+                fileWriter.append(String.join(",", newList ));
+                fileWriter.append("\n");
 
             }
 //      Informs user of completion and then flushes and closes I/O stream.
         System.out.println("File Written");
-        myWriter.flush();
-        myWriter.close();
+        fileWriter.flush();
+        fileWriter.close();
 
     }
 }
