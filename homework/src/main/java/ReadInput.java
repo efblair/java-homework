@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class ReadInput {
 //    Class for Reading in the data from csv.
-    public List<List<String>> listInput(String fileName) {
+    public List<List<String>> listInput() {
+        String fileName = getFileName();
         List<List<String>> content = new ArrayList<>();
         try {
 //            Checks to see if the file exists within specified location
@@ -25,5 +26,17 @@ public class ReadInput {
         }
 
         return content;
+    }
+
+    public String getFileName() {
+
+
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter name of CSV - (file extension not required)");
+
+        String fileName = myObj.nextLine();
+        fileName = "../" + fileName.trim() + ".csv"; // Read user input
+
+        return fileName;
     }
 }

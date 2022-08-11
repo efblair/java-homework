@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public final class SortLists implements Comparator<List<String>> {
-/* Used some code from stack overflow here after some trial and error with other methoods
+/* Used some code from stack overflow here after some trial and error with other methods
 Created my own Comparator for the array.sort function
 The function goes through the content of each List, comparing it with the next List along
 Comparison will compare first value of list, and if equal will compared second value, and so forth.
