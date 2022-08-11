@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class ReadInput {
 //    Class for Reading in the data from csv.
-    public List<List<String>> listInput() {
+    public List<String> listInput() {
         String fileName = getFileName();
-        List<List<String>> content = new ArrayList<>();
+        List<String> content = new ArrayList<>();
         try {
 //            Checks to see if the file exists within specified location
             File myCSV = new File(fileName);
@@ -17,8 +17,8 @@ public class ReadInput {
 //          Reads the data from the CSV into a List of Lists with each new line representing a new Line
             while (myReader.hasNext()) {
                 String line = myReader.next();
-                String[] csvValues = line.split(",");
-                content.add(Arrays.asList(csvValues));
+                line = line.replaceAll("[,]", " ");
+                content.add(line.trim());
             }
 //      throws an error if the file cannot be located
         } catch (FileNotFoundException e) {

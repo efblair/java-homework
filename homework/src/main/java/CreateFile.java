@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CreateFile {
 
-    public void fileCreator(String fileName, List<List<String>> content) {
+    public void fileCreator(String fileName, List<String> content) {
         try {
 //            Checks if the specified file already exits
             File newFile = new File(fileName);
@@ -24,13 +24,15 @@ public class CreateFile {
         }
     }
 
-    public void fileWrite(String fileName, List<List<String>> content) throws IOException {
+    public void fileWrite(String fileName, List<String> content) throws IOException {
 //        Opens the file writer I/O stream
         FileWriter myWriter = new FileWriter(fileName);
-        for (List<String> strings : content) {
-//          Goes through the list, writing to file with a comma indicating the separator
-            myWriter.append(String.join(",", strings));
-            myWriter.append("\n");
+            String[] newList;
+
+        for (String s : content) {
+                newList = s.split(" ");
+                myWriter.append(String.join(",", newList ));
+                myWriter.append("\n");
 
             }
 //      Informs user of completion and then flushes and closes I/O stream.
